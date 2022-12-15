@@ -1,0 +1,56 @@
+<div class="row">
+
+    <!--Form controls Start-->
+    <div class="col-12 mb-30">
+        <div class="box">
+            <div class="box-head">
+                <h3 class="title">ایجاد مطلب جدید</h3>
+            </div>
+            <div class="box-body">
+                <div class="row mbn-20">
+                    {{#if hasError}}
+                    {{#each errors}}
+                    <div class="alert alert-danger ml-1" role="alert">
+                        {{ this }}
+                    </div>
+                    {{/each}}
+                    {{/if}}
+                    <form action="/admin/posts/update/{{ editPost.id }}" method="post">
+                        <!--Form Field-->
+                        <div class="">
+                            <div class="row mbn-15">
+                                <div class="col-12 mb-15"><input name="title" type="text" class="form-control" value="{{ editPost.title }}" placeholder="عنوان مطلب"></div>
+                                <div class="col-12 mb-15"><input name="slug" type="text" class="form-control" value="{{ editPost.slug }}" placeholder="نامک مطلب"></div>
+                                <div class="col-12 mb-15"><textarea name="content" class="form-control" placeholder="منطقه متن">{{ editPost.content }}</textarea></div>
+                                <div class="col-12 mb-15">
+                                    <select class="form-control" name="author_id">
+                                        {{#each users}}
+                                        <option value="{{ this.id }}"
+                                        {{#isPostAuthor this.id}}selected{{/isPostAuthor}}>{{ this.full_name }}</option>
+                                        {{/each}}
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!--Radio-->
+                            <div class="col-lg-4 col-12 mb-20">
+                                <label><input type="radio" name="status" value="0"
+                                {{#isSelectedStatus 0}}checked{{/isSelectedStatus}}>پیش نویس</label>
+                                <label><input type="radio" name="status" value="1"
+                                {{#isSelectedStatus 1}}checked{{/isSelectedStatus}}>درحال بررسی</label>
+                                <label><input type="radio" name="status" value="2"
+                                {{#isSelectedStatus 2}}checked{{/isSelectedStatus}}>منتشر شده</label>
+                            </div>
+                            <!--Radio-->
+
+                            <button type="submit" class="button button-primary"><span>ویرایش</span></button>
+
+                        </div>
+                        <!--Form Field-->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Form controls End-->
+</div>

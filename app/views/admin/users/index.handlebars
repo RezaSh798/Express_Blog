@@ -1,0 +1,39 @@
+<!--Table Head Dark Start-->
+<div class="row">
+    <div class="col-lg-12 col-12 mb-30">
+        <div class="box">
+            <div class="box-head">
+                <h4 class="title" style="display: inline-block;">لیست کاربران</h4>
+                <a href="users/create" style="float: left;"><button class="button button-primary"><span>ایجاد کاربر جدید +</span></button></a>
+            </div>
+            <div class="box-body">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>نام کاربر</th>
+                            <th>ایمیل</th>
+                            <th>تاریخ ایجاد</th>
+                            <th>عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each users}}
+                        <tr>
+                            <th>{{ this.id }}</th>
+                            <td>{{ this.full_name }}</td>
+                            <td>{{ this.email }}</td>
+                            <td>{{ this.jalali_created_at }}</td>
+                            <td>
+                                <a href="users/delete/{{ this.id }}"><button class="button button-danger"><span>حذف</span></button></a>
+                                <a href="users/edit/{{ this.id }}"><button class="button button-success"><span>ویرایش</span></button></a>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Table Head Dark End-->

@@ -1,0 +1,39 @@
+<!--Table Head Dark Start-->
+<div class="row">
+    <div class="col-lg-12 col-12 mb-30">
+        <div class="box">
+            <div class="box-head">
+                <h4 class="title" style="display: inline-block;">دیدگاه ها</h4>
+            </div>
+            <div class="box-body">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>نویسنده</th>
+                            <th>دیدگاه</th>
+                            <th>در پاسخ به</th>
+                            <th>ارسال شده</th>
+                            <th>عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each comments}}
+                        <tr class="{{commentBackground this.status}}">
+                            <th>{{ this.user_name }}</th>
+                            <td>{{ this.comment }}</td>
+                            <td>{{ this.title }}</td>
+                            <td>{{ this.jalali_created_at }}</td>
+                            <td>
+                                <a href="comments/approved/{{ this.id }}"><button class="button"><span>تایید</span></button></a>
+                                <a href="comments/reject/{{ this.id }}"><button class="button"><span>رد</span></button></a>
+                                <a href="comments/delete/{{ this.id }}"><button class="button"><span>حذف</span></button></a>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Table Head Dark End-->
